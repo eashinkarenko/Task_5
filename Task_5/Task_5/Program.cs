@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Task_5
 {
@@ -16,6 +12,7 @@ namespace Task_5
             //  х х х 
             //  х х х 
             //  х х х 
+            // печать рпимера 
             for (int i =0; i<5; i++)
             {
                 for (int j=0; j<5; j++)
@@ -50,13 +47,28 @@ namespace Task_5
             Console.Write("Введите размер квадратной матрицы : ");
             
             Random rnd = new Random();
+            int N = 0;
             //задаётся размерность матрицы
-            int N = Convert.ToInt32(Console.ReadLine());
+            bool ok = false;
+            while (ok == false)
+            {
+                try
+                {
+                    N = Convert.ToInt32(Console.ReadLine());
+                    ok = true;
+
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Некорректный ввод...");
+                }
+            }
             Console.WriteLine("         Матрица " + N + "x" + N);    
             
             // заполнение матрицы с помощбю ДСЧ      
             if (N > 2 && N % 2 == 1)
             {
+
 
                 double[,] MasDouble = new double[N,N];
                 //заполнение и печать
@@ -91,6 +103,7 @@ namespace Task_5
                             Console.Write("  " + MasDouble[i, j] + "  ");
                         }
                     }
+                    // изменение границ треугольника
                     Start++;
                     End--;
                     if  (i <= End)  Console.WriteLine();
@@ -101,9 +114,7 @@ namespace Task_5
                 Console.WriteLine("Итог суммирования = " + CountSum + " ( " + CountSumOf + " объектов)");
             }
             else Console.Write(@"Извините, работа с данным размером матрицы не может быть выполнена,
-так как нельзя выделить четкую область для суммирования в ней элементов.");
-
-            
+так как нельзя выделить четкую область для суммирования в ней элементов.");            
             Console.ReadLine();
         }
     }
